@@ -9,8 +9,8 @@ const spanTime = document.querySelector('#time');
 const spanRecord = document.querySelector('#record');
 const pResult = document.querySelector('#result');
 
-let canvasSize;
-let elementsSize;
+let canvasSize; // para que sea siempre un cuadrado responsive
+let elementsSize; // tamaño de las bombas
 let level = 0;
 let lives = 3;
 
@@ -30,6 +30,8 @@ let enemyPositions = [];
 
 window.addEventListener('load', setCanvasSize);
 window.addEventListener('resize', setCanvasSize);
+//resize es para cuando cambie de tamaño la pagina
+//inicie la funcion setCanvasSize()
 
 function fixNumber(n) {
   return Number(n.toFixed(2));
@@ -41,7 +43,7 @@ function setCanvasSize() {
   } else {
     canvasSize = window.innerHeight * 0.7;
   }
-  
+  //hace responsive el juego
   canvasSize = Number(canvasSize.toFixed(0));
   
   canvas.setAttribute('width', canvasSize);
@@ -58,7 +60,7 @@ function startGame() {
   console.log({ canvasSize, elementsSize });
   //console.log(window.innerWidth, window.innerHeight);
 
-  game.font = elementsSize + 'px Verdana';
+  game.font = elementsSize + 'px Verdana'; //tamaño de las bombas
   game.textAlign = 'end';
 
   const map = maps[level];
@@ -82,6 +84,7 @@ function startGame() {
   
   enemyPositions = [];
   game.clearRect(0,0,canvasSize, canvasSize);
+  //Borrar - (x - y - ancho - alto)
 
   mapRowCols.forEach((row, rowI) => {
     row.forEach((col, colI) => {
@@ -106,6 +109,7 @@ function startGame() {
       }
       
       game.fillText(emoji, posX, posY);
+      //Inserta texto 
     });
   });
 
