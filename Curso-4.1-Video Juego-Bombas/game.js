@@ -1,4 +1,6 @@
+//variable que almacena la etiqueta canvas
 const canvas = document.querySelector('#game');
+//creacion del espacio de juego en 2d
 const game = canvas.getContext('2d');
 const btnUp = document.querySelector('#up');
 const btnLeft = document.querySelector('#left');
@@ -55,7 +57,7 @@ function setCanvasSize() {
   playerPosition.y = undefined;
   startGame();
 }
-
+// funcion para inicializar el juego
 function startGame() {
   console.log({ canvasSize, elementsSize });
   //console.log(window.innerWidth, window.innerHeight);
@@ -76,6 +78,7 @@ function startGame() {
     showRecord();
   }
   
+
   const mapRows = map.trim().split('\n');
   const mapRowCols = mapRows.map(row => row.trim().split(''));
   console.log({map, mapRows, mapRowCols});
@@ -83,9 +86,19 @@ function startGame() {
   showLives();
   
   enemyPositions = [];
-  game.clearRect(0,0,canvasSize, canvasSize);
   //Borrar - (x - y - ancho - alto)
-
+  game.clearRect(0,0,canvasSize, canvasSize);
+  
+  //renderiza las bombas en la fila y columna
+  //for(let col=1; col<=10; col++){
+  //    for (let row =1; row <= 10; row++){
+  //    game.fillText(emojis[mapRowCols[row-1][col-1]],
+  //      elementsSize * col, elementsSize * row);
+  //  }
+  //}
+  
+  //esta es la refactorizacion del ciclo for anterior
+  //rowI es el indice de la fila
   mapRowCols.forEach((row, rowI) => {
     row.forEach((col, colI) => {
       const emoji = emojis[col];
