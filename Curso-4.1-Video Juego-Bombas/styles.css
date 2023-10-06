@@ -36,10 +36,12 @@ canvas {
 }
 
 button {
-  background-color: #fdef05;
+  background-color: #033b0d;
   border-radius: 8px;
-  border-color: #ff6600;
+  border-color: #59f611;
   font-family: inherit;
+  font-size: 13px;
+  font-weight: bold;
   margin: 0;
   padding: 5px 20px;
   width: 100px;
@@ -54,6 +56,8 @@ button:not(:last-child) {
   margin: 0 auto;
   width: 80%;
   max-width: 460px;
+  font-size: 21px;
+  font-weight: bold;
 }
 
 p {
